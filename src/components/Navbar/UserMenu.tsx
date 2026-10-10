@@ -1,5 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { Link } from 'react-router'
 import { useAuth } from '../../auth/useAuth'
+import { paths } from '../../routes/paths'
 import type { User } from '../../types/user'
 import { CheckIcon, ChevronDownIcon, LogoutIcon, TicketIcon, UserIcon } from '../icons'
 
@@ -92,14 +94,24 @@ export function UserMenu({ user }: { user: User }) {
           )}
 
           <div className="user-menu__items">
-            <a href="/profile" className="user-menu__item" role="menuitem">
+            <Link
+              to={paths.profile}
+              className="user-menu__item"
+              role="menuitem"
+              onClick={() => setIsOpen(false)}
+            >
               <UserIcon />
               My Profile
-            </a>
-            <a href="/profile/tickets" className="user-menu__item" role="menuitem">
+            </Link>
+            <Link
+              to={paths.profileTickets}
+              className="user-menu__item"
+              role="menuitem"
+              onClick={() => setIsOpen(false)}
+            >
               <TicketIcon />
               My Tickets
-            </a>
+            </Link>
           </div>
 
           <div className="user-menu__footer">

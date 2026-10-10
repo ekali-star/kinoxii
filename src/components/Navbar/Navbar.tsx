@@ -1,5 +1,7 @@
+import { Link } from 'react-router'
 import { useAuth } from '../../auth/useAuth'
 import { useAuthModal } from '../../auth/useAuthModal'
+import { paths } from '../../routes/paths'
 import { UserMenu } from './UserMenu'
 import './Navbar.css'
 
@@ -9,14 +11,14 @@ export function Navbar() {
 
   return (
     <header className="navbar">
-      <a href="/" className="navbar__logo" aria-label="Kino XII home">
+      <Link to={paths.home} className="navbar__logo" aria-label="Kino XII home">
         KINO <span>XII</span>
-      </a>
+      </Link>
 
       <nav aria-label="Main">
-        <a href="/sessions" className="navbar__link">
+        <Link to={paths.sessions} className="navbar__link">
           Sessions
-        </a>
+        </Link>
       </nav>
 
       <div className="navbar__actions">

@@ -119,3 +119,36 @@ img {
 .link-button:hover {
   text-decoration: underline;
 }
+
+.page {
+  padding: 24px var(--page-gutter) 80px;
+}
+
+.page--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.page__title {
+  margin: 0 0 32px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.page--centered .page__title {
+  margin-bottom: 12px;
+}
+
+.page__lead {
+  margin: 0 0 32px;
+  color: var(--text-muted);
+}
+
+.page__subtitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
