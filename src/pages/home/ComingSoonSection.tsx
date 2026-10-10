@@ -6,7 +6,7 @@ import { formatDayMonthLong, movieMeta } from '../../lib/format'
 import { useComingSoonMovies, useNotifyMe } from '../../movies/queries'
 import { paths } from '../../routes/paths'
 import type { Movie } from '../../types/movie'
-import { SectionError } from './SectionError'
+import { SectionError } from '../../components/SectionError/SectionError'
 import './MovieCards.css'
 
 function ComingSoonCard({ movie }: { movie: Movie }) {
@@ -31,14 +31,14 @@ function ComingSoonCard({ movie }: { movie: Movie }) {
         <p className="movie-card__meta">{movieMeta(movie.genres, movie.runtimeMinutes)}</p>
         <AgeBadge rating={movie.ageRating} />
         {movie.isNotified ? (
-          <span className="soon-card__notify soon-card__notify--done">
+          <span className="notify-button notify-button--done">
             <CheckIcon size={16} />
             We'll notify you
           </span>
         ) : (
           <button
             type="button"
-            className="soon-card__notify"
+            className="notify-button"
             disabled={isPending}
             onClick={handleNotify}
             aria-label={`Notify me when ${movie.title} opens`}

@@ -153,3 +153,83 @@ img {
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgb(236 48 19 / 0.12);
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.chip-list .age-badge {
+  height: 26px;
+  padding: 0 12px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(6px);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.button--glass {
+  background: rgb(255 255 255 / 0.1);
+  color: var(--text);
+  backdrop-filter: blur(6px);
+}
+
+.button--glass:hover {
+  background: rgb(255 255 255 / 0.18);
+}
+
+.notify-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  margin-top: auto;
+  padding: 0 14px;
+  border: 1px solid rgb(255 255 255 / 0.85);
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notify-button:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.notify-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.notify-button--done {
+  border-color: var(--success);
+  color: var(--success);
+  cursor: default;
+}

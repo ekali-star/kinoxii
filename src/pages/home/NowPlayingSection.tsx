@@ -5,7 +5,7 @@ import { formatPrice, movieMeta } from '../../lib/format'
 import { useNowPlayingMovies } from '../../movies/queries'
 import { paths } from '../../routes/paths'
 import type { Movie } from '../../types/movie'
-import { SectionError } from './SectionError'
+import { SectionError } from '../../components/SectionError/SectionError'
 import './MovieCards.css'
 
 const LIMIT = 12

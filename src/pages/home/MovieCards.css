@@ -136,38 +136,6 @@
   margin-bottom: 6px;
 }
 
-.soon-card__notify {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 32px;
-  margin-top: auto;
-  padding: 0 14px;
-  border: 1px solid rgb(255 255 255 / 0.85);
-  border-radius: 999px;
-  background: none;
-  color: var(--text);
-  font: inherit;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.soon-card__notify:hover:not(:disabled) {
-  background: rgb(255 255 255 / 0.08);
-}
-
-.soon-card__notify:disabled {
-  opacity: 0.6;
-  cursor: progress;
-}
-
-.soon-card__notify--done {
-  border-color: var(--success);
-  color: var(--success);
-  cursor: default;
-}
-
 .recent-card {
   display: flex;
   gap: 12px;
@@ -235,7 +203,7 @@
     width: 100%;
   }
 
-  .soon-card__notify {
+  .notify-button {
     margin-top: 12px;
   }
 }

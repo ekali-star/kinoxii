@@ -63,18 +63,18 @@ export function HeroCarousel() {
       </div>
 
       <div className="hero__content" key={active.id}>
-        <span className="hero__tag">Premiere · Week of {formatDayMonthShort(active.releaseDate)}</span>
+        <span className="tag">Premiere · Week of {formatDayMonthShort(active.releaseDate)}</span>
         <h1 className="hero__title">{active.title}</h1>
-        <ul className="hero__chips">
+        <ul className="chip-list">
           <li>
             <AgeBadge rating={active.ageRating} />
           </li>
-          <li className="hero__chip">
+          <li className="chip">
             <ClockIcon size={14} />
             {active.runtimeMinutes} Min
           </li>
           {active.formats.map((format) => (
-            <li key={format.id} className="hero__chip">
+            <li key={format.id} className="chip">
               {format.name}
             </li>
           ))}

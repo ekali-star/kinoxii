@@ -67,49 +67,11 @@
   }
 }
 
-.hero__tag {
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgb(236 48 19 / 0.12);
-  color: var(--accent);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
 .hero__title {
   margin: 16px 0 20px;
   font-size: 3rem;
   font-weight: 800;
   line-height: 1.05;
-  text-transform: uppercase;
-}
-
-.hero__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 20px;
-  padding: 0;
-  list-style: none;
-}
-
-.hero__chips .age-badge {
-  height: 26px;
-  padding: 0 12px;
-}
-
-.hero__chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  height: 26px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.1);
-  backdrop-filter: blur(6px);
-  font-size: 0.75rem;
-  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -132,16 +94,6 @@
 
 .hero__actions .button {
   text-decoration: none;
-}
-
-.button--glass {
-  background: rgb(255 255 255 / 0.1);
-  color: var(--text);
-  backdrop-filter: blur(6px);
-}
-
-.button--glass:hover {
-  background: rgb(255 255 255 / 0.18);
 }
 
 .hero__controls {
