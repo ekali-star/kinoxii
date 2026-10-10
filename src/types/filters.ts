@@ -1,6 +1,6 @@
 import type { TicketTypeSlug } from './booking'
 import type { AgeRating } from './movie'
-import type { Language, TimeBand } from './session'
+import type { Language, SessionSort, TimeBand } from './session'
 import type { Format, Venue } from './user'
 
 export interface TicketType {
@@ -17,7 +17,7 @@ export interface FilterOptions {
   formats: Format[]
   languages: Language[]
   timeBands: { id: TimeBand; label: string }[]
-  sorts: { id: string; label: string }[]
+  sorts: { id: SessionSort; label: string }[]
   ticketTypes: TicketType[]
   ageRatings: AgeRating[]
   maxSeatsPerOrder: number
