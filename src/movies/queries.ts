@@ -3,6 +3,7 @@ import {
   getComingSoonMovies,
   getFeaturedMovies,
   getMovie,
+  getMovieSessions,
   getNowPlayingMovies,
   notifyMe,
 } from '../api/movies'
@@ -15,7 +16,9 @@ export const movieKeys = {
   nowPlaying: (limit?: number) => [...movieKeys.all, 'now-playing', limit] as const,
   comingSoon: (viewer: number | 'guest', limit?: number) =>
     [...movieKeys.all, 'coming-soon', viewer, limit] as const,
-  detail: (slug: string) => [...movieKeys.all, 'detail', slug] as const,
+  detail: (slug: string, viewer: number | 'guest') =>
+    [...movieKeys.all, 'detail', slug, viewer] as const,
+  sessions: (slug: string, date: string) => [...movieKeys.all, 'sessions', slug, date] as const,
 }
 
 export function useFeaturedMovies() {
@@ -42,9 +45,19 @@ export function useComingSoonMovies(limit?: number) {
 }
 
 export function useMovie(slug: string) {
+  const { user, status } = useAuth()
   return useQuery({
-    queryKey: movieKeys.detail(slug),
+    queryKey: movieKeys.detail(slug, user?.id ?? 'guest'),
     queryFn: ({ signal }) => getMovie(slug, signal),
+    enabled: status !== 'loading',
+  })
+}
+
+export function useMovieSessions(slug: string, date: string | null) {
+  return useQuery({
+    queryKey: movieKeys.sessions(slug, date ?? ''),
+    queryFn: ({ signal }) => getMovieSessions(slug, date ?? '', signal),
+    enabled: date !== null,
   })
 }
 
@@ -56,6 +69,10 @@ export function useNotifyMe() {
       queryClient.setQueriesData<Movie[]>(
         { queryKey: [...movieKeys.all, 'coming-soon'] },
         (movies) => movies?.map((movie) => (movie.slug === slug ? { ...movie, isNotified: true } : movie)),
+      )
+      queryClient.setQueriesData<Movie>(
+        { queryKey: [...movieKeys.all, 'detail', slug] },
+        (movie) => (movie ? { ...movie, isNotified: true } : movie),
       )
     },
   })

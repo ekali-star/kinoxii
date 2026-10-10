@@ -1,6 +1,7 @@
 import { apiRequest } from './client'
 import type { ApiResponse } from '../types/api'
-import type { Movie, MovieWithSynopsis, NotifyResponse } from '../types/movie'
+import type { Movie, MovieDetail, MovieWithSynopsis, NotifyResponse } from '../types/movie'
+import type { VenueSessions } from '../types/session'
 
 function withLimit(path: string, limit?: number) {
   return limit ? `${path}?limit=${limit}` : path
@@ -30,8 +31,16 @@ export async function getComingSoonMovies(limit?: number, signal?: AbortSignal) 
 }
 
 export async function getMovie(slug: string, signal?: AbortSignal) {
-  const response = await apiRequest<ApiResponse<MovieWithSynopsis>>(
+  const response = await apiRequest<ApiResponse<MovieDetail>>(
     `/movies/${encodeURIComponent(slug)}`,
+    { signal },
+  )
+  return response.data
+}
+
+export async function getMovieSessions(slug: string, date: string, signal?: AbortSignal) {
+  const response = await apiRequest<ApiResponse<VenueSessions[]>>(
+    `/movies/${encodeURIComponent(slug)}/sessions?date=${date}`,
     { signal },
   )
   return response.data

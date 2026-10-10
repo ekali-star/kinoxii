@@ -36,6 +36,12 @@ export interface MovieWithSynopsis extends Movie {
   synopsis: string
 }
 
+export interface MovieDetail extends MovieWithSynopsis {
+  director: string | null
+  cast: string | null
+  availableDates: string[]
+}
+
 export interface NotifyResponse {
   movieId: number
   subscribed: boolean
