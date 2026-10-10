@@ -1,0 +1,74 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.field[data-state='error'] .field__label {
+  color: var(--danger);
+}
+
+.field__control {
+  position: relative;
+}
+
+.field__input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--field);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 120ms;
+}
+
+.field__input::placeholder {
+  color: var(--placeholder);
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: rgb(255 255 255 / 0.25);
+}
+
+.field[data-state] .field__input {
+  padding-right: 44px;
+}
+
+.field[data-state='error'] .field__input {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.field__icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.field[data-state='error'] .field__icon {
+  color: var(--danger);
+}
+
+.field[data-state='valid'] .field__icon {
+  color: var(--success);
+}
+
+.field__error {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--danger);
+}

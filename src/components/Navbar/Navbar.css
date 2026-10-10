@@ -1,0 +1,241 @@
+.navbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  height: 100px;
+  padding: 0 var(--page-gutter);
+}
+
+.navbar__logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar__logo span {
+  color: var(--accent);
+}
+
+.navbar__link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  color: var(--accent);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    gap: 16px;
+    height: 72px;
+  }
+
+  .navbar__actions {
+    gap: 8px;
+  }
+
+  .navbar__actions .button {
+    padding: 0 14px;
+  }
+}
+
+.user-avatar {
+  position: relative;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--field);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.user-avatar--sm {
+  width: 40px;
+  height: 40px;
+  font-size: 0.8125rem;
+}
+
+.user-avatar--md {
+  width: 42px;
+  height: 42px;
+  font-size: 0.875rem;
+}
+
+.user-avatar__status {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--bg);
+  border-radius: 50%;
+  background: var(--warning);
+}
+
+.user-avatar__status[data-complete='true'] {
+  background: var(--success);
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu__trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.user-menu__chevron {
+  margin-left: 4px;
+  transition: transform 150ms;
+}
+
+.user-menu__trigger[aria-expanded='true'] .user-menu__chevron {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 480px) {
+  .user-menu__first-name {
+    display: none;
+  }
+}
+
+.user-menu__dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  width: 300px;
+  max-width: calc(100vw - 2 * var(--page-gutter));
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.user-menu__identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 16px;
+}
+
+.user-menu__identity-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-menu__name {
+  font-weight: 600;
+}
+
+.user-menu__email {
+  overflow: hidden;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-menu__status {
+  margin: 0 20px 8px;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+}
+
+.user-menu__status--incomplete {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--warning-soft);
+  color: var(--text-muted);
+}
+
+.user-menu__status--incomplete strong {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--warning);
+}
+
+.user-menu__status--complete {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--success-soft);
+  color: var(--success);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.user-menu__items {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px 8px;
+}
+
+.user-menu__footer {
+  padding: 8px;
+  border-top: 1px solid var(--divider);
+}
+
+.user-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-menu__item:hover,
+.user-menu__item:focus-visible {
+  background: var(--field);
+}
+
+.user-menu__item--danger {
+  color: var(--danger);
+  font-weight: 500;
+}
