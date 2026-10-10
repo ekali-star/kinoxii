@@ -7,12 +7,14 @@ const BASE_URL =
 export class ApiError extends Error {
   status: number
   errors?: Record<string, string[]>
+  body: unknown
 
-  constructor(status: number, message: string, errors?: Record<string, string[]>) {
+  constructor(status: number, message: string, errors?: Record<string, string[]>, body?: unknown) {
     super(message)
     this.name = 'ApiError'
     this.status = status
     this.errors = errors
+    this.body = body
   }
 
   get isUnauthenticated() {
@@ -21,6 +23,11 @@ export class ApiError extends Error {
 
   get isValidationError() {
     return this.status === 422 && this.errors !== undefined
+  }
+
+  get contested(): string[] {
+    const contested = (this.body as { contested?: unknown } | null)?.contested
+    return Array.isArray(contested) ? contested.filter((code) => typeof code === 'string') : []
   }
 }
 
@@ -67,7 +74,7 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
     if (response.status === 401 && token && notifyUnauthenticated) {
       unauthenticatedListeners.forEach((listener) => listener())
     }
-    throw new ApiError(response.status, error?.message ?? response.statusText, error?.errors)
+    throw new ApiError(response.status, error?.message ?? response.statusText, error?.errors, json)
   }
 
   return json as T
