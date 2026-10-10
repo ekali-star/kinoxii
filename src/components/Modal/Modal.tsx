@@ -5,7 +5,9 @@ import './Modal.css'
 interface ModalProps {
   title: string
   subtitle?: string
-  size?: 'sm' | 'md'
+  size?: 'sm' | 'md' | 'lg'
+  headerAside?: ReactNode
+  hideHeader?: boolean
   onClose: () => void
   closeOnBackdropClick?: boolean
   children: ReactNode
@@ -15,6 +17,8 @@ export function Modal({
   title,
   subtitle,
   size = 'sm',
+  headerAside,
+  hideHeader = false,
   onClose,
   closeOnBackdropClick = true,
   children,
@@ -49,16 +53,19 @@ export function Modal({
       }}
     >
       <div className="modal__panel">
-        <header className="modal__header">
-          <div>
+        <header className={hideHeader ? 'modal__header modal__header--hidden' : 'modal__header'}>
+          <div className="modal__heading">
             <h2 id={titleId} className="modal__title">
               {title}
             </h2>
             {subtitle && <p className="modal__subtitle">{subtitle}</p>}
           </div>
-          <button type="button" className="modal__close" aria-label="Close" onClick={onClose}>
-            <CloseIcon size={24} />
-          </button>
+          <div className="modal__header-aside">
+            {headerAside}
+            <button type="button" className="modal__close" aria-label="Close" onClick={onClose}>
+              <CloseIcon size={24} />
+            </button>
+          </div>
         </header>
         {children}
       </div>

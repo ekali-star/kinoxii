@@ -4,9 +4,15 @@ import { hasErrors, type FieldErrors } from './validation'
 export function useFormFields<Field extends string>(
   initialValues: Record<Field, string>,
   validate: (values: Record<Field, string>) => FieldErrors<Field>,
+  formatters: Partial<Record<Field, (value: string) => string>> = {},
 ) {
   const [values, setValues] = useState(initialValues)
-  const [touched, setTouched] = useState<Partial<Record<Field, boolean>>>({})
+  const [touched, setTouched] = useState(
+    () =>
+      Object.fromEntries(
+        Object.entries(initialValues).map(([field, value]) => [field, value !== '']),
+      ) as Partial<Record<Field, boolean>>,
+  )
   const [serverErrors, setServerErrors] = useState<FieldErrors<Field>>({})
 
   const clientErrors = validate(values)
@@ -24,7 +30,8 @@ export function useFormFields<Field extends string>(
     error: errorFor(field),
     valid: isValid(field),
     onChange: (event: ChangeEvent<HTMLInputElement>) => {
-      const { value } = event.target
+      const format = formatters[field]
+      const value = format ? format(event.target.value) : event.target.value
       setValues((current) => ({ ...current, [field]: value }))
       setServerErrors((current) => ({ ...current, [field]: undefined }))
     },

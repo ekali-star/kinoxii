@@ -17,6 +17,10 @@
   width: 472px;
 }
 
+.modal--lg {
+  width: 1146px;
+}
+
 .modal::backdrop {
   background: rgb(7 12 28 / 0.35);
   backdrop-filter: blur(12px);
@@ -55,6 +59,31 @@
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 24px;
+}
+
+.modal__heading {
+  min-width: 0;
+}
+
+.modal__header-aside {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.modal__header--hidden {
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+
+.modal__header--hidden .modal__heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .modal__title {
