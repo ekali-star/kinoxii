@@ -1,4 +1,5 @@
 import { Outlet, ScrollRestoration, useMatch } from 'react-router'
+import { BookingModal } from '../booking/BookingModal'
 import { Footer } from '../components/Footer/Footer'
 import { Navbar } from '../components/Navbar/Navbar'
 import { paths } from '../routes/paths'
@@ -15,6 +16,7 @@ export function RootLayout() {
         <Outlet />
       </main>
       <Footer />
+      <BookingModal />
       <ScrollRestoration />
     </div>
   )
