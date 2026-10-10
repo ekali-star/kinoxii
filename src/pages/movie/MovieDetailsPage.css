@@ -1,0 +1,363 @@
+.movie-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 568px;
+  padding: 120px var(--page-gutter) 40px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.movie-hero--placeholder {
+  background: linear-gradient(180deg, #111830 0%, var(--bg) 100%);
+}
+
+.movie-hero__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.movie-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(7 12 28 / 0.75) 0%, rgb(7 12 28 / 0.35) 50%, transparent 80%),
+    linear-gradient(180deg, rgb(7 12 28 / 0.6) 0%, transparent 30%, transparent 65%, var(--bg) 100%);
+}
+
+.movie-hero__inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.movie-hero__poster {
+  flex-shrink: 0;
+  width: 290px;
+  aspect-ratio: 290 / 374;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: 0 24px 48px rgb(0 0 0 / 0.45);
+}
+
+.movie-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 720px;
+  padding-bottom: 4px;
+}
+
+.movie-hero__title {
+  margin: 14px 0 12px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.movie-hero__synopsis {
+  max-width: 560px;
+  margin: 0 0 16px;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.movie-hero .chip-list {
+  margin: 0;
+}
+
+.movie-page__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 64px;
+  padding: 40px var(--page-gutter) 80px;
+}
+
+.movie-section-title {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.movie-sessions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+.movie-sessions .movie-section-title {
+  margin-bottom: -8px;
+}
+
+.movie-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.movie-notice p {
+  margin: 0;
+}
+
+.movie-restriction {
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius);
+  background: var(--danger-soft);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.venue-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.venue-group__name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.venue-group__halls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hall-group {
+  --hall-bg: var(--field);
+
+  padding: 14px 14px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--hall-bg);
+}
+
+.hall-group__name {
+  margin: 0 0 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.hall-group__sessions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.movie-sessions__skeleton {
+  width: min(100%, 456px);
+  height: 132px;
+}
+
+.session-ticket {
+  display: flex;
+  height: 96px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 120ms,
+    transform 120ms;
+}
+
+.session-ticket:hover:not(:disabled) {
+  border-color: rgb(255 255 255 / 0.25);
+  transform: translateY(-2px);
+}
+
+.session-ticket:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.session-ticket__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px 0 20px;
+}
+
+.session-ticket__time {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.session-ticket__tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.session-ticket__format {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--field);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.session-ticket__stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border-left: 2px dashed rgb(255 255 255 / 0.7);
+}
+
+.session-ticket__stub::before,
+.session-ticket__stub::after {
+  content: '';
+  position: absolute;
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--hall-bg, var(--field));
+}
+
+.session-ticket__stub::before {
+  top: -7px;
+}
+
+.session-ticket__stub::after {
+  bottom: -7px;
+}
+
+.session-ticket__price {
+  color: var(--accent);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.session-ticket__seats {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.session-ticket[data-low='true'] .session-ticket__seats {
+  color: var(--accent);
+}
+
+.movie-aside {
+  min-width: 0;
+}
+
+.movie-aside__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.movie-aside__row dt {
+  margin-bottom: 4px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.movie-aside__row dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.rating-note {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.rating-note__title {
+  margin: 0 0 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.rating-note__body {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.rating-note__body strong {
+  margin-right: 6px;
+}
+
+@media (max-width: 1100px) {
+  .movie-page__body {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-hero {
+    min-height: 0;
+    padding-top: 96px;
+  }
+
+  .movie-hero__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .movie-hero__poster {
+    width: 160px;
+  }
+
+  .movie-hero__title {
+    font-size: 2rem;
+  }
+
+  .hall-group {
+    width: 100%;
+  }
+
+  .session-ticket {
+    flex: 1 1 200px;
+  }
+
+  .session-ticket__main {
+    flex: 1;
+  }
+}
