@@ -1,0 +1,101 @@
+.section {
+  padding: 48px var(--page-gutter);
+}
+
+.section + .section {
+  border-top: 1px solid var(--divider-soft);
+}
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section__title {
+  margin: 0;
+}
+
+.section__title--display {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.section__title--plain {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.section__see-all {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.section__see-all:hover {
+  text-decoration: underline;
+}
+
+.scroll-row {
+  display: flex;
+  gap: 16px;
+  margin: 0 calc(-1 * var(--page-gutter));
+  padding: 0 var(--page-gutter) 8px;
+  overflow-x: auto;
+  scroll-padding-inline: var(--page-gutter);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, #000 calc(100% - var(--fade, 160px)), transparent);
+}
+
+@media (max-width: 768px) {
+  .scroll-row {
+    --fade: 40px;
+  }
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-row > * {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.scroll-row:has(> :last-child:hover),
+.scroll-row:has(> :last-child:focus-within) {
+  mask-image: none;
+}
+
+.section-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.skeleton {
+  border-radius: var(--radius-lg);
+  background: linear-gradient(90deg, var(--field) 0%, #262a3d 50%, var(--field) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

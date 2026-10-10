@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router'
 import { RequireAuth } from '../auth/RequireAuth'
 import { RootLayout } from '../layouts/RootLayout'
-import { HomePage } from '../pages/HomePage'
+import { HomePage } from '../pages/home/HomePage'
 import { MovieDetailsPage } from '../pages/MovieDetailsPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { SessionsPage } from '../pages/SessionsPage'

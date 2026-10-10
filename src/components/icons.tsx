@@ -65,6 +65,31 @@ export const LogoutIcon = (props: IconProps) => (
   </Icon>
 )
 
+export const ChevronLeftIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d="M15 6l-6 6 6 6" />
+  </Icon>
+)
+
+export const ChevronRightIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d="M9 6l6 6-6 6" />
+  </Icon>
+)
+
+export const ClockIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <circle cx="12" cy="13" r="8" />
+    <path d="M12 9v4l2.5 2.5M10 2h4" />
+  </Icon>
+)
+
+export const BellIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9M10 20a2.2 2.2 0 0 0 4 0" />
+  </Icon>
+)
+
 export const ChevronDownIcon = (props: IconProps) => (
   <Icon {...props}>
     <path d="M6 9l6 6 6-6" />

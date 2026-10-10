@@ -5,12 +5,12 @@ import { paths } from '../../routes/paths'
 import { UserMenu } from './UserMenu'
 import './Navbar.css'
 
-export function Navbar() {
+export function Navbar({ overlay = false }: { overlay?: boolean }) {
   const { user, status } = useAuth()
   const { openLogin, openRegister } = useAuthModal()
 
   return (
-    <header className="navbar">
+    <header className={overlay ? 'navbar navbar--overlay' : 'navbar'}>
       <Link to={paths.home} className="navbar__logo" aria-label="Kino XII home">
         KINO <span>XII</span>
       </Link>

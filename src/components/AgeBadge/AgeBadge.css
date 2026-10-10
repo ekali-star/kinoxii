@@ -1,0 +1,12 @@
+.age-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgb(236 48 19 / 0.12);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: help;
+}
