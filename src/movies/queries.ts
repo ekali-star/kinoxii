@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   getComingSoonMovies,
   getFeaturedMovies,
@@ -6,6 +6,7 @@ import {
   getMovieSessions,
   getNowPlayingMovies,
   notifyMe,
+  searchMovies,
 } from '../api/movies'
 import { useAuth } from '../auth/useAuth'
 import type { Movie } from '../types/movie'
@@ -19,6 +20,7 @@ export const movieKeys = {
   detail: (slug: string, viewer: number | 'guest') =>
     [...movieKeys.all, 'detail', slug, viewer] as const,
   sessions: (slug: string, date: string) => [...movieKeys.all, 'sessions', slug, date] as const,
+  search: (query: string) => [...movieKeys.all, 'search', query] as const,
 }
 
 export function useFeaturedMovies() {
@@ -58,6 +60,16 @@ export function useMovieSessions(slug: string, date: string | null) {
     queryKey: movieKeys.sessions(slug, date ?? ''),
     queryFn: ({ signal }) => getMovieSessions(slug, date ?? '', signal),
     enabled: date !== null,
+  })
+}
+
+export function useMovieSearch(query: string) {
+  return useQuery({
+    queryKey: movieKeys.search(query),
+    queryFn: ({ signal }) => searchMovies(query, signal),
+    enabled: query !== '',
+    placeholderData: keepPreviousData,
+    staleTime: 60_000,
   })
 }
 

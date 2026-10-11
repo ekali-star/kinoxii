@@ -53,3 +53,11 @@ export async function notifyMe(slug: string) {
   )
   return response.data
 }
+
+export async function searchMovies(query: string, signal?: AbortSignal) {
+  const response = await apiRequest<ApiResponse<Movie[]>>(
+    `/search?q=${encodeURIComponent(query)}`,
+    { signal },
+  )
+  return response.data
+}

@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { useAuth } from '../../auth/useAuth'
 import { useAuthModal } from '../../auth/useAuthModal'
 import { paths } from '../../routes/paths'
+import { NavbarSearch } from './NavbarSearch'
 import { UserMenu } from './UserMenu'
 import './Navbar.css'
 
@@ -22,6 +23,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
       </nav>
 
       <div className="navbar__actions">
+        <NavbarSearch />
         {user ? (
           <UserMenu user={user} />
         ) : status === 'guest' ? (

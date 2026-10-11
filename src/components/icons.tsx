@@ -95,3 +95,18 @@ export const ChevronDownIcon = (props: IconProps) => (
     <path d="M6 9l6 6 6-6" />
   </Icon>
 )
+
+export const SearchIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="M20 20l-3.5-3.5" />
+  </Icon>
+)
+
+export const PopcornIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d="M5 9h14l-1.6 11.2a1 1 0 0 1-1 .8H7.6a1 1 0 0 1-1-.8L5 9z" />
+    <path d="M9.5 9l.5 12M14.5 9l-.5 12" />
+    <path d="M6 9a2.5 2.5 0 0 1 2.2-3.7A3 3 0 0 1 12 3.5a3 3 0 0 1 3.8 1.8A2.5 2.5 0 0 1 18 9" />
+  </Icon>
+)
