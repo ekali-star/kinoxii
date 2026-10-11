@@ -1,3 +1,5 @@
+import type { VenueSummary } from './session'
+
 export interface Format {
   id: number
   slug: string
@@ -22,6 +24,13 @@ export interface User {
   mobileNumber: string | null
   dateOfBirth: string | null
   age: number | null
-  preferredVenue?: Venue | null
+  preferredVenue?: VenueSummary | null
   profileComplete: boolean
+}
+
+export interface ProfileRequest {
+  fullName: string
+  mobileNumber: string
+  dateOfBirth: string
+  preferredVenueId: number | null
 }

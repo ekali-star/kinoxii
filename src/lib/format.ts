@@ -52,3 +52,21 @@ export function nextDays(count: number, from = new Date()) {
 }
 
 export type Day = ReturnType<typeof nextDays>[number]
+
+const monthShort = new Intl.DateTimeFormat('en-US', { month: 'short' })
+
+export function formatWeekdayDate(date: string | Date) {
+  const value = typeof date === 'string' ? parseDate(date) : date
+  return `${weekdayShort.format(value)} ${value.getDate()} ${monthShort.format(value)}`
+}
+
+export function sessionStart(date: string, time: string) {
+  const [hours, minutes] = time.split(':').map(Number)
+  const start = parseDate(date)
+  start.setHours(hours, minutes)
+  return start
+}
+
+export function formatTime(date: Date) {
+  return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`
+}
