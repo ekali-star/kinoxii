@@ -29,7 +29,7 @@ export function useFormFields<Field extends string>(
     value: values[field],
     error: errorFor(field),
     valid: isValid(field),
-    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const format = formatters[field]
       const value = format ? format(event.target.value) : event.target.value
       setValues((current) => ({ ...current, [field]: value }))
