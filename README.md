@@ -1,75 +1,30 @@
-# React + TypeScript + Vite
+# Kino XII
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cinema booking app built for Redberry Bootcamp XII. Browse films and live events, filter sessions across four halls, pick seats on the live hall map and buy tickets.
 
-Currently, two official plugins are available:
+**Live:** https://ekali-star.github.io/kinoxii/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Login and registration modals with avatar preview, resuming the protected action after sign in
+- Home page with animated featured hero, Now Playing, Coming Soon (Notify me) and recently viewed
+- Sessions page with venue, date, format, language and time of day filters, sorting, pagination and full URL state
+- Movie details page with sessions by venue and an age gate from the profile date of birth
+- Two step booking modal: API driven seat map, ticket types, 8 minute hold timer, 409 seat conflict recovery, checkout and confirmation
+- Profile page with personal info validation, completeness status and My Tickets with refunds
+- Navbar search across films and events
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+React 19, TypeScript, Vite, React Router, TanStack Query.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Running locally
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+The API defaults to `https://api.kinoxii.redberryinternship.ge/api` and can be overridden with `VITE_API_URL`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Pushes to `main` deploy to GitHub Pages through `.github/workflows/deploy.yml`.
